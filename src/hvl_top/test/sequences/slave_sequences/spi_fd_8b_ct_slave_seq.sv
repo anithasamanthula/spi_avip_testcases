@@ -36,7 +36,8 @@ endfunction:new
 //-----------------------------------------------------------------------------
 task spi_fd_8b_ct_slave_seq::body(); 
   req=slave_tx::type_id::create("req");
-    for(int i=0; i < 8;i++)
+    //for(int i=0; i < 8;i++)
+    repeat(4)
   begin
 		start_item(req);
     if(!req.randomize () with {req.master_in_slave_out.size==1;})

@@ -37,10 +37,11 @@ endfunction:new
 //-----------------------------------------------------------------------------
 task spi_fd_8b_ct_master_seq::body(); 
   req=master_tx::type_id::create("req");
-  for(int i=0; i < 8; i++)
+  //for(int i=0; i < 8; i++)
+  repeat(4)
   begin
 		start_item(req);
-    if(!req.randomize () with { req.master_out_slave_in.size==1; req.cs==2'b0;})
+    if(!req.randomize () with { req.master_out_slave_in.size==1;})
     `uvm_fatal(get_type_name(),"Randomization failed")
     req.print();
     finish_item(req);
